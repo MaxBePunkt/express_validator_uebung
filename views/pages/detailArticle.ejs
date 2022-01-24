@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>home</title>
+</head>
+
+<body>
+  <%- include('../sections/nav') %>
+    <main>
+      <section class="detailArticle">
+        <h2>
+          <%- thisArticle.title%>
+        </h2>
+        <img src="/img<%- thisArticle.url%>" alt="">
+
+        <article>
+          <div class="headDiv">
+            <img src="<%- thisArticle.author_bild%>" alt="">
+            <div>
+              <p class="headline">
+                <%- thisArticle.author%>
+              </p>
+              <span>
+                <%- thisArticle.published_at%> · <%- thisArticle.duration%> min read
+              </span>
+            </div>
+          </div>
+          <p>
+            <%- thisArticle.body%>
+          </p>
+          <br>
+          <p>
+            <%- thisArticle.body%>
+          </p>
+          <br>
+          <p>
+            <%- thisArticle.body%>
+          </p>
+        </article>
+      </section>
+      <div class="eyesDiv">
+        <img src="/img/eyes.svg" alt="eyes">
+      </div>
+      <section class="whatNext">
+        <h2>What to read next</h2>
+        <article>
+          <% randomData.sort(()=> Math.random() - 0.5).slice(1, 7).forEach((elt)=> { %>
+            <div>
+              <a href="/article/<%- elt.id%>">
+
+                <img src="/img<%- elt.url%>" alt="<%- elt.title%>">
+                <h3>
+                  <%- elt.title%>
+                </h3>
+              </a>
+            </div>
+
+            <% })%>
+        </article>
+      </section>
+
+    </main>
+    <%- include('../sections/footer') %>
+
+</body>
+
+</html>

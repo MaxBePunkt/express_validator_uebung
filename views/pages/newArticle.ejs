@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>home</title>
+</head>
+
+<body>
+  <%- include('../sections/nav') %>
+    <main>
+      <section class="newFirstSec">
+        <h2>Add New Article</h2>
+        <hr>
+        <form action="/new" method="post" enctype="multipart/form-data">
+          <input placeholder="Title" type="text" name="title" id="title">
+          <input placeholder="Url Picture" type="text" name="url" id="url">
+          <input placeholder="Author" type="text" name="author" id="author">
+          <input placeholder="Author Picture" type="text" name="authorPic" id="authorPic">
+          <textarea placeholder="Write your article here...." name="textarea" id="textarea" cols="30"
+            rows="4"></textarea>
+          <input id="submitFormButton" type="submit" value="SEND ARTICLE">
+        </form>
+      </section>
+      <div class="eyesDiv">
+        <img src="img/eyes.svg" alt="eyes">
+      </div>
+      <section class="whatNext">
+        <h2>What to read next</h2>
+        <article>
+          <% randomData.sort(()=> Math.random() - 0.5).slice(1, 7).forEach((elt)=> { %>
+            <div>
+              <a href="/article/<%- elt.id%>">
+
+                <img src="img<%- elt.url%>" alt="<%- elt.title%>">
+                <h3>
+                  <%- elt.title%>
+                </h3>
+              </a>
+            </div>
+
+            <% })%>
+        </article>
+      </section>
+    </main>
+
+    <%- include('../sections/footer') %>
+
+</body>
+
+</html>

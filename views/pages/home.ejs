@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>home</title>
+</head>
+
+<body>
+  <%- include('../sections/nav') %>
+    <main>
+      <section class="firstBigSec">
+        <img src="img<%- datas[0].url%>" alt="<%- datas[0].title%>">
+        <h2>
+          <%- datas[0].title%>
+        </h2>
+        <hr>
+        <h2>All articles</h2>
+        <article>
+          <% datas.slice(1).forEach((elt)=> { %>
+            <div>
+              <a href="/article/<%- elt.id%>">
+                <img src="img<%- elt.url%>" alt="<%- elt.title%>">
+
+                <h3>
+                  <%- elt.title%>
+                </h3>
+              </a>
+            </div>
+
+            <% })%>
+        </article>
+      </section>
+
+    </main>
+    <%- include('../sections/footer') %>
+
+</body>
+
+</html>
